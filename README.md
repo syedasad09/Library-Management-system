@@ -1,60 +1,84 @@
-# 📚 Library Management System (DBMS Project)
+# 📚 Library Management System
 
-> A relational database management system designed to automate library operations, book indexing, member registrations, issuing/returning workflows, and fine management.
+**C++ academic programming project**
 
----
+A library-management program distributed with its C++ source code and a precompiled Windows executable. This is a C++ application project, **not** a SQL database project.
 
-## 📌 Table of Contents
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Database Schema & Architecture](#-database-schema--architecture)
-  - [Core Entities](#core-entities)
-  - [ER Diagram & Relations](#er-diagram--relations)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Database Setup](#database-setup)
-- [Key SQL Operations & Stored Procedures](#-key-sql-operations--stored-procedures)
-- [Future Roadmap](#-future-roadmap)
-- [Contributing](#-contributing)
-- [License & Contact](#-license--contact)
+## Repository contents
 
----
+Download and extract [`Project - Library Management System.zip`](<Project - Library Management System.zip>).
 
-## 📖 Overview
-
-The **Library Management System** is a structured database project built to manage the daily administrative tasks of a modern library. It provides a reliable structure for tracking book inventories, managing student/staff memberships, monitoring borrowing and return dates, and automatically calculating overdue fines while maintaining strict relational integrity.
-
----
-
-## ✨ Key Features
-
-* 📖 **Catalog & Book Management:** Organize books by categories, genres, authors, publishers, and ISBNs.
-* 👨‍🎓 **Member Management:** Maintain records for students, faculty, and general members with active membership statuses.
-* 🔄 **Issue & Return Tracking:** Track active book loans, due dates, renewal histories, and return confirmations.
-* 💰 **Fine & Penalty Calculation:** Automated tracking of overdue books and fine calculations based on return delays.
-* 🔍 **Search & Indexing:** Optimized queries for finding books by title, author, category, or availability status.
-
----
-
-## 🏗️ Database Schema & Architecture
-
-### Core Entities
-* **Books:** `Book_ID`, `ISBN`, `Title`, `Author_ID`, `Category_ID`, `Publisher`, `Publication_Year`, `Total_Copies`, `Available_Copies`
-* **Authors:** `Author_ID`, `First_Name`, `Last_Name`, `Biography`
-* **Categories / Genres:** `Category_ID`, `Category_Name`, `Description`
-* **Members / Users:** `Member_ID`, `First_Name`, `Last_Name`, `Email`, `Phone`, `Membership_Date`, `Status`
-* **Loans / Issue Records:** `Loan_ID`, `Book_ID`, `Member_ID`, `Issue_Date`, `Due_Date`, `Return_Date`, `Status`
-* **Fines:** `Fine_ID`, `Loan_ID`, `Fine_Amount`, `Payment_Status`, `Paid_Date`
-
-### ER Diagram & Relations
 ```text
- +--------------+       1:N       +--------------+       1:N       +--------------+
- |   Authors    | ───────────────> |    Books     | <─────────────── |  Categories  |
- +--------------+                  +--------------+                  +--------------+
-                                          │
-                                     1:N  │
-                                          ▼
- +--------------+       1:N       +--------------+       1:1       +--------------+
- |   Members    | ───────────────> |    Loans     | ───────────────> |    Fines     |
- +--------------+                  +--------------+                  +--------------+
+Library-Management-system/
+├── README.md
+└── Project - Library Management System.zip
+    ├── asad and aliyan project.cpp   # C++ source code
+    └── asad and aliyan project.exe   # Windows executable
+```
+
+## Overview
+
+This project is a programming exercise based on common library-administration tasks. Its educational goals include managing library-related information, practicing program organization, and using C++ to model interactive workflows.
+
+The exact operations and storage mechanisms are defined by the `.cpp` file. **A working database connection, persistent records, and fine calculation have not been verified** and should not be assumed.
+
+## Technology stack
+
+| Layer | Technology |
+| --- | --- |
+| Language | C++ |
+| Build | C++ compiler (such as GCC / MinGW) |
+| Distributed artifact | Windows `.exe` |
+
+## Getting started
+
+### 1. Clone and extract
+
+```bash
+git clone https://github.com/syedasad09/Library-Management-system.git
+cd Library-Management-system
+```
+
+Extract the ZIP archive and open a terminal in the folder containing the C++ source.
+
+### 2. Build from source
+
+With a compatible C++ compiler installed:
+
+```bash
+g++ "asad and aliyan project.cpp" -o library-management
+```
+
+### 3. Run
+
+On Windows:
+
+```powershell
+.\library-management.exe
+```
+
+On Linux or macOS, **if the source is portable and compiled successfully**:
+
+```bash
+./library-management
+```
+
+> Some Windows-specific headers or compiler settings may require changes. Building from reviewed source is preferable to running an unfamiliar executable.
+
+## Project structure improvements
+
+- Make `src/` the home for the C++ source.
+- Keep any sample data under `data/` rather than mixing it with code.
+- Add documented commands for each supported platform.
+- Add test cases and screenshots of the actual program.
+- Consider publishing binaries as release assets instead of committing them alongside source code.
+
+These are recommendations, not changes made to the existing program.
+
+## Maintainer
+
+[@syedasad09](https://github.com/syedasad09) · [Repository](https://github.com/syedasad09/Library-Management-system)
+
+## License
+
+No repository-level `LICENSE` file is present. Redistribution is not automatically permitted.
